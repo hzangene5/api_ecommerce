@@ -19,7 +19,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('address');
+            $table->string('cellphone');
+            $table->string('postal_code');
+
+            $table->foreignId('province_id');
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
+
+            $table->foreignId('city_id');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
