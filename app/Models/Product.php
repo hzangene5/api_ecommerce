@@ -12,4 +12,8 @@ class Product extends Model
 
     protected $table = 'products';
     protected $guarded = [];
+
+    public function images(){
+        return $this->hasMany(ProductImage::class);
+    }
 }
